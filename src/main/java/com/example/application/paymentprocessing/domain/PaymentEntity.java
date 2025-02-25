@@ -1,12 +1,9 @@
 package com.example.application.paymentprocessing.domain;
 
 import com.example.application.base.domain.Money;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.application.base.domain.MoneyAttributeConverter;
+import jakarta.persistence.*;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Objects;
 
@@ -16,8 +13,8 @@ public class PaymentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long paymentId;
-    private String currency;
-    private BigDecimal amount;
+    @Convert(converter = MoneyAttributeConverter.class)
+    private Money amount;
     private String referenceNumber;
     private Instant paymentDate;
 
@@ -26,8 +23,7 @@ public class PaymentEntity {
 
     public PaymentEntity(Money amount, String referenceNumber, Instant paymentDate) {
         this.referenceNumber = referenceNumber;
-        this.amount = amount.getAmount();
-        this.currency = amount.getCurrencyCode();
+        this.amount = amount;
         this.paymentDate = paymentDate;
     }
 
@@ -40,7 +36,7 @@ public class PaymentEntity {
     }
 
     public Money getAmount() {
-        return new Money(amount, currency);
+        return amount;
     }
 
     public Instant getPaymentDate() {

@@ -1,12 +1,9 @@
 package com.example.application.orderprocessing.domain;
 
 import com.example.application.base.domain.Money;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.application.base.domain.MoneyAttributeConverter;
+import jakarta.persistence.*;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.Period;
 import java.util.Objects;
@@ -18,8 +15,8 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
     private String description;
-    private String currency;
-    private BigDecimal amount;
+    @Convert(converter = MoneyAttributeConverter.class)
+    private Money amount;
     private String paymentTime;
     private Instant orderDate;
 
@@ -28,8 +25,7 @@ public class OrderEntity {
 
     public OrderEntity(String description, Money amount, Period paymentTime, Instant orderDate) {
         this.description = description;
-        this.amount = amount.getAmount();
-        this.currency = amount.getCurrencyCode();
+        this.amount = amount;
         this.paymentTime = paymentTime.toString();
         this.orderDate = orderDate;
     }
@@ -43,7 +39,7 @@ public class OrderEntity {
     }
 
     public Money getAmount() {
-        return new Money(amount, currency);
+        return amount;
     }
 
     public Period getPaymentTime() {
