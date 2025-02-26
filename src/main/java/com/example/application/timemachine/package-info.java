@@ -1,6 +1,7 @@
 @ApplicationModule(
-        id = "time-machine",
-        displayName = "Time Machine"
+        allowedDependencies = {
+                "sharedkernel::*"
+        }
 )
 package com.example.application.timemachine;
 

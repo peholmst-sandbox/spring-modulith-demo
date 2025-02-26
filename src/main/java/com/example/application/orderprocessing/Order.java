@@ -1,4 +1,4 @@
-package com.example.application.orderprocessing.service;
+package com.example.application.orderprocessing;
 
 import java.time.Instant;
 

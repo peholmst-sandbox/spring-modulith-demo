@@ -3,9 +3,8 @@ package com.example.application.invoiceprocessing;
 import com.aventrix.jnanoid.jnanoid.NanoIdUtils;
 import com.example.application.invoiceprocessing.domain.InvoiceEntity;
 import com.example.application.invoiceprocessing.domain.InvoiceRepository;
-import com.example.application.invoiceprocessing.service.*;
-import com.example.application.orderprocessing.service.OrderCreatedEvent;
-import com.example.application.paymentprocessing.service.PaymentReceivedEvent;
+import com.example.application.orderprocessing.OrderCreatedEvent;
+import com.example.application.paymentprocessing.PaymentReceivedEvent;
 import com.example.application.sharedkernel.domain.InterestRate;
 import com.example.application.sharedkernel.domain.Money;
 import jakarta.annotation.PreDestroy;
@@ -29,7 +28,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 @Component
-class InvoiceProcessing implements InvoiceService {
+public class InvoiceProcessing {
 
     private static final Logger log = LoggerFactory.getLogger(InvoiceProcessing.class);
 
@@ -108,7 +107,6 @@ class InvoiceProcessing implements InvoiceService {
         });
     }
 
-    @Override
     @Transactional(readOnly = true)
     public List<Invoice> list(Pageable pageable) {
         return invoiceRepository.findAll(pageable).map(this::createDto).toList();

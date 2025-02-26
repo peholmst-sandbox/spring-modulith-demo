@@ -1,7 +1,7 @@
 package com.example.application.invoiceprocessing.ui.view;
 
-import com.example.application.invoiceprocessing.service.Invoice;
-import com.example.application.invoiceprocessing.service.InvoiceService;
+import com.example.application.invoiceprocessing.Invoice;
+import com.example.application.invoiceprocessing.InvoiceProcessing;
 import com.example.application.sharedkernel.ui.component.ViewToolbar;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Main;
@@ -18,9 +18,9 @@ import static com.vaadin.flow.spring.data.VaadinSpringDataHelpers.toSpringPageRe
 public class InvoiceView extends Main {
 
 
-    public InvoiceView(InvoiceService invoiceService) {
+    public InvoiceView(InvoiceProcessing invoiceProcessing) {
         var invoiceGrid = new Grid<Invoice>();
-        invoiceGrid.setItems(query -> invoiceService.list(toSpringPageRequest(query)).stream());
+        invoiceGrid.setItems(query -> invoiceProcessing.list(toSpringPageRequest(query)).stream());
         invoiceGrid.addColumn(Invoice::invoiceId).setHeader("Invoice ID");
         invoiceGrid.addColumn(Invoice::orderId).setHeader("Order ID");
         invoiceGrid.addColumn(Invoice::description).setHeader("Description");

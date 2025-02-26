@@ -1,4 +1,4 @@
-package com.example.application.invoiceprocessing.service;
+package com.example.application.invoiceprocessing;
 
 import com.example.application.sharedkernel.domain.Money;
 

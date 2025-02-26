@@ -2,10 +2,6 @@ package com.example.application.orderprocessing;
 
 import com.example.application.orderprocessing.domain.OrderEntity;
 import com.example.application.orderprocessing.domain.OrderRepository;
-import com.example.application.orderprocessing.service.Order;
-import com.example.application.orderprocessing.service.OrderCreatedEvent;
-import com.example.application.orderprocessing.service.OrderDetails;
-import com.example.application.orderprocessing.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;
@@ -18,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Component
-class OrderProcessing implements OrderService {
+public class OrderProcessing {
 
     private static final Logger log = LoggerFactory.getLogger(OrderProcessing.class);
 
@@ -32,7 +28,6 @@ class OrderProcessing implements OrderService {
         this.orderRepository = orderRepository;
     }
 
-    @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Order createOrder(OrderDetails orderDetails) {
         var entity = orderRepository.saveAndFlush(new OrderEntity(orderDetails.description(), orderDetails.amount(), orderDetails.paymentTime(), moments.instant()));
@@ -42,7 +37,6 @@ class OrderProcessing implements OrderService {
         return dto;
     }
 
-    @Override
     @Transactional(readOnly = true)
     public List<Order> list(Pageable pageable) {
         return orderRepository.findAll(pageable).map(this::createDto).toList();

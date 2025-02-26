@@ -1,8 +1,8 @@
 package com.example.application.orderprocessing.ui.view;
 
-import com.example.application.orderprocessing.service.Order;
-import com.example.application.orderprocessing.service.OrderDetails;
-import com.example.application.orderprocessing.service.OrderService;
+import com.example.application.orderprocessing.Order;
+import com.example.application.orderprocessing.OrderDetails;
+import com.example.application.orderprocessing.OrderProcessing;
 import com.example.application.sharedkernel.domain.Money;
 import com.example.application.sharedkernel.ui.component.ViewToolbar;
 import com.vaadin.flow.component.button.Button;
@@ -26,15 +26,15 @@ import static com.vaadin.flow.spring.data.VaadinSpringDataHelpers.toSpringPageRe
 @Menu(title = "Order Processing", order = 1, icon = "vaadin:cart")
 public class OrderView extends Main {
 
-    private final OrderService orderService;
+    private final OrderProcessing orderProcessing;
 
     private final TextField description;
     private final BigDecimalField amount;
     private final IntegerField paymentTime;
     private final Grid<Order> orderGrid;
 
-    public OrderView(OrderService orderService) {
-        this.orderService = orderService;
+    public OrderView(OrderProcessing orderProcessing) {
+        this.orderProcessing = orderProcessing;
 
         description = new TextField();
         description.setPlaceholder("Order description");
@@ -49,7 +49,7 @@ public class OrderView extends Main {
         createBtn.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         orderGrid = new Grid<>();
-        orderGrid.setItems(query -> orderService.list(toSpringPageRequest(query)).stream());
+        orderGrid.setItems(query -> orderProcessing.list(toSpringPageRequest(query)).stream());
         orderGrid.addColumn(Order::id).setHeader("Order ID");
         orderGrid.addColumn(order -> order.details().description()).setHeader("Description");
         orderGrid.addColumn(order -> order.details().amount()).setHeader("Amount");
@@ -67,7 +67,7 @@ public class OrderView extends Main {
 
     private void createOrder() {
         var orderDetails = new OrderDetails(description.getValue(), new Money(amount.getValue()), Period.ofDays(paymentTime.getValue()));
-        orderService.createOrder(orderDetails);
+        orderProcessing.createOrder(orderDetails);
         description.clear();
         amount.clear();
         paymentTime.clear();

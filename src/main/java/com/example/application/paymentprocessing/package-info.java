@@ -1,9 +1,6 @@
 @ApplicationModule(
-        id = "payment-processing",
-        displayName = "Payment Processing",
         allowedDependencies = {
-                "shared-kernel::component",
-                "shared-kernel::domain"
+                "sharedkernel::*"
         }
 )
 @NullMarked

@@ -1,11 +1,9 @@
 @ApplicationModule(
         allowedDependencies = {
-                "orderprocessing",
                 "paymentprocessing",
                 "sharedkernel::*"
-        })
-@NullMarked
-package com.example.application.invoiceprocessing;
+        }
+)
+package com.example.application.paymentprocessing.ui;
 
-import org.jspecify.annotations.NullMarked;
 import org.springframework.modulith.ApplicationModule;

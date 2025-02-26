@@ -1,6 +1,5 @@
 @ApplicationModule(
-        id = "shared-kernel",
-        displayName = "Shared Kernel"
+        allowedDependencies = {}
 )
 @NullMarked
 package com.example.application.sharedkernel;

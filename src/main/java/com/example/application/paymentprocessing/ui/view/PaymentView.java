@@ -1,7 +1,7 @@
 package com.example.application.paymentprocessing.ui.view;
 
-import com.example.application.paymentprocessing.service.Payment;
-import com.example.application.paymentprocessing.service.PaymentService;
+import com.example.application.paymentprocessing.Payment;
+import com.example.application.paymentprocessing.PaymentProcessing;
 import com.example.application.sharedkernel.domain.Money;
 import com.example.application.sharedkernel.ui.component.ViewToolbar;
 import com.vaadin.flow.component.button.Button;
@@ -22,14 +22,14 @@ import static com.vaadin.flow.spring.data.VaadinSpringDataHelpers.toSpringPageRe
 @Menu(title = "Payment Processing", order = 3, icon = "vaadin:cash")
 public class PaymentView extends Main {
 
-    private final PaymentService paymentService;
+    private final PaymentProcessing paymentProcessing;
 
     private final TextField referenceNumber;
     private final BigDecimalField amount;
     private final Grid<Payment> paymentGrid;
 
-    public PaymentView(PaymentService paymentService) {
-        this.paymentService = paymentService;
+    public PaymentView(PaymentProcessing paymentProcessing) {
+        this.paymentProcessing = paymentProcessing;
 
         referenceNumber = new TextField();
         referenceNumber.setPlaceholder("Ref No");
@@ -41,7 +41,7 @@ public class PaymentView extends Main {
         payBtn.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         paymentGrid = new Grid<>();
-        paymentGrid.setItems(query -> paymentService.list(toSpringPageRequest(query)).stream());
+        paymentGrid.setItems(query -> paymentProcessing.list(toSpringPageRequest(query)).stream());
         paymentGrid.addColumn(Payment::paymentId).setHeader("Payment ID");
         paymentGrid.addColumn(Payment::amount).setHeader("Amount");
         paymentGrid.addColumn(Payment::referenceNumber).setHeader("Ref No");
@@ -57,7 +57,7 @@ public class PaymentView extends Main {
     }
 
     private void pay() {
-        paymentService.registerPayment(new Money(amount.getValue()), referenceNumber.getValue());
+        paymentProcessing.registerPayment(new Money(amount.getValue()), referenceNumber.getValue());
         amount.clear();
         referenceNumber.clear();
         paymentGrid.getDataProvider().refreshAll();
