@@ -22,8 +22,8 @@ import java.time.Period;
 import static com.vaadin.flow.spring.data.VaadinSpringDataHelpers.toSpringPageRequest;
 
 @Route
-@PageTitle("Order Management")
-@Menu(title = "Order Management", order = 1, icon = "vaadin:cart")
+@PageTitle("Order Processing")
+@Menu(title = "Order Processing", order = 1, icon = "vaadin:cart")
 public class OrderView extends Main {
 
     private final OrderService orderService;
@@ -61,7 +61,7 @@ public class OrderView extends Main {
         addClassNames(LumoUtility.BoxSizing.BORDER, LumoUtility.Display.FLEX, LumoUtility.FlexDirection.COLUMN,
                 LumoUtility.Padding.MEDIUM, LumoUtility.Gap.SMALL);
 
-        add(new ViewToolbar("Order Management", ViewToolbar.group(description, amount, paymentTime, createBtn)));
+        add(new ViewToolbar("Order Processing", ViewToolbar.group(description, amount, paymentTime, createBtn)));
         add(orderGrid);
     }
 
