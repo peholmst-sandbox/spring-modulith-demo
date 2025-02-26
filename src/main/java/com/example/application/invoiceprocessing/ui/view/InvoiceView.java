@@ -14,7 +14,7 @@ import static com.vaadin.flow.spring.data.VaadinSpringDataHelpers.toSpringPageRe
 
 @Route
 @PageTitle("Invoice Processing")
-@Menu(title = "Invoice Processing", order = 2)
+@Menu(title = "Invoice Processing", order = 2, icon = "vaadin:invoice")
 public class InvoiceView extends Main {
 
 

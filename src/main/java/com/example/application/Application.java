@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.time.Clock;
 
@@ -14,6 +15,7 @@ import java.time.Clock;
 @Theme("default")
 @EnableScheduling
 @EnableAsync
+@EnableTransactionManagement(proxyTargetClass = true)
 public class Application implements AppShellConfigurator {
 
     @Bean

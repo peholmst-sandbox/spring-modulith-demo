@@ -23,7 +23,7 @@ import static com.vaadin.flow.spring.data.VaadinSpringDataHelpers.toSpringPageRe
 
 @Route
 @PageTitle("Order Management")
-@Menu(title = "Order Management", order = 1)
+@Menu(title = "Order Management", order = 1, icon = "vaadin:cart")
 public class OrderView extends Main {
 
     private final OrderService orderService;

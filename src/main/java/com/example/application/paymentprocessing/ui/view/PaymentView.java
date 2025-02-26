@@ -19,7 +19,7 @@ import static com.vaadin.flow.spring.data.VaadinSpringDataHelpers.toSpringPageRe
 
 @Route
 @PageTitle("Payment Processing")
-@Menu(title = "Payment Processing", order = 3)
+@Menu(title = "Payment Processing", order = 3, icon = "vaadin:cash")
 public class PaymentView extends Main {
 
     private final PaymentService paymentService;
