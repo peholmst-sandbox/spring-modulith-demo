@@ -1,11 +1,11 @@
 package com.example.application.paymentprocessing;
 
-import com.example.application.base.domain.Money;
-import com.example.application.paymentprocessing.api.Payment;
-import com.example.application.paymentprocessing.api.PaymentReceivedEvent;
-import com.example.application.paymentprocessing.api.PaymentService;
 import com.example.application.paymentprocessing.domain.PaymentEntity;
 import com.example.application.paymentprocessing.domain.PaymentRepository;
+import com.example.application.paymentprocessing.service.Payment;
+import com.example.application.paymentprocessing.service.PaymentReceivedEvent;
+import com.example.application.paymentprocessing.service.PaymentService;
+import com.example.application.sharedkernel.domain.Money;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;

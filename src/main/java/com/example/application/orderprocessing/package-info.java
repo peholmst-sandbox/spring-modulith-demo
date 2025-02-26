@@ -1,4 +1,11 @@
-@ApplicationModule
+@ApplicationModule(
+        id = "order-processing",
+        displayName = "Order Processing",
+        allowedDependencies = {
+                "shared-kernel::component",
+                "shared-kernel::domain"
+        }
+)
 @NullMarked
 package com.example.application.orderprocessing;
 

@@ -1,13 +1,13 @@
 package com.example.application.invoiceprocessing;
 
 import com.aventrix.jnanoid.jnanoid.NanoIdUtils;
-import com.example.application.base.domain.InterestRate;
-import com.example.application.base.domain.Money;
-import com.example.application.invoiceprocessing.api.*;
 import com.example.application.invoiceprocessing.domain.InvoiceEntity;
 import com.example.application.invoiceprocessing.domain.InvoiceRepository;
-import com.example.application.orderprocessing.api.OrderCreatedEvent;
-import com.example.application.paymentprocessing.api.PaymentReceivedEvent;
+import com.example.application.invoiceprocessing.service.*;
+import com.example.application.orderprocessing.service.OrderCreatedEvent;
+import com.example.application.paymentprocessing.service.PaymentReceivedEvent;
+import com.example.application.sharedkernel.domain.InterestRate;
+import com.example.application.sharedkernel.domain.Money;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;

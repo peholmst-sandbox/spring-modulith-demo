@@ -1,11 +1,11 @@
 package com.example.application.orderprocessing;
 
-import com.example.application.orderprocessing.api.Order;
-import com.example.application.orderprocessing.api.OrderCreatedEvent;
-import com.example.application.orderprocessing.api.OrderDetails;
-import com.example.application.orderprocessing.api.OrderService;
 import com.example.application.orderprocessing.domain.OrderEntity;
 import com.example.application.orderprocessing.domain.OrderRepository;
+import com.example.application.orderprocessing.service.Order;
+import com.example.application.orderprocessing.service.OrderCreatedEvent;
+import com.example.application.orderprocessing.service.OrderDetails;
+import com.example.application.orderprocessing.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;

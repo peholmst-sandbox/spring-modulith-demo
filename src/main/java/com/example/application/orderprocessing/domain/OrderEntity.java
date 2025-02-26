@@ -1,7 +1,7 @@
 package com.example.application.orderprocessing.domain;
 
-import com.example.application.base.domain.Money;
-import com.example.application.base.domain.MoneyAttributeConverter;
+import com.example.application.sharedkernel.domain.Money;
+import com.example.application.sharedkernel.domain.MoneyAttributeConverter;
 import jakarta.persistence.*;
 
 import java.time.Instant;

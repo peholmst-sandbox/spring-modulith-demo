@@ -1,9 +1,9 @@
 package com.example.application.paymentprocessing.ui.view;
 
-import com.example.application.base.domain.Money;
-import com.example.application.base.ui.component.ViewToolbar;
-import com.example.application.paymentprocessing.api.Payment;
-import com.example.application.paymentprocessing.api.PaymentService;
+import com.example.application.paymentprocessing.service.Payment;
+import com.example.application.paymentprocessing.service.PaymentService;
+import com.example.application.sharedkernel.domain.Money;
+import com.example.application.sharedkernel.ui.component.ViewToolbar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;

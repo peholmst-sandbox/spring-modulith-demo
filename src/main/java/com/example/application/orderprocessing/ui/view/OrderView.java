@@ -1,10 +1,10 @@
 package com.example.application.orderprocessing.ui.view;
 
-import com.example.application.base.domain.Money;
-import com.example.application.base.ui.component.ViewToolbar;
-import com.example.application.orderprocessing.api.Order;
-import com.example.application.orderprocessing.api.OrderDetails;
-import com.example.application.orderprocessing.api.OrderService;
+import com.example.application.orderprocessing.service.Order;
+import com.example.application.orderprocessing.service.OrderDetails;
+import com.example.application.orderprocessing.service.OrderService;
+import com.example.application.sharedkernel.domain.Money;
+import com.example.application.sharedkernel.ui.component.ViewToolbar;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;

@@ -1,8 +1,8 @@
 package com.example.application.invoiceprocessing.ui.view;
 
-import com.example.application.base.ui.component.ViewToolbar;
-import com.example.application.invoiceprocessing.api.Invoice;
-import com.example.application.invoiceprocessing.api.InvoiceService;
+import com.example.application.invoiceprocessing.service.Invoice;
+import com.example.application.invoiceprocessing.service.InvoiceService;
+import com.example.application.sharedkernel.ui.component.ViewToolbar;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.router.Menu;
