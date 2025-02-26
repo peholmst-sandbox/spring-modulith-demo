@@ -8,6 +8,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Main;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.textfield.BigDecimalField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Menu;
@@ -57,7 +58,8 @@ public class PaymentView extends Main {
     }
 
     private void pay() {
-        paymentProcessing.registerPayment(new Money(amount.getValue()), referenceNumber.getValue());
+        var payment = paymentProcessing.registerPayment(new Money(amount.getValue()), referenceNumber.getValue());
+        Notification.show("Payment %s registered".formatted(payment.paymentId()));
         amount.clear();
         referenceNumber.clear();
         paymentGrid.getDataProvider().refreshAll();

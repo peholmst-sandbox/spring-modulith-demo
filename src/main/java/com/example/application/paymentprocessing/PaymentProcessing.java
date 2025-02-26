@@ -30,11 +30,12 @@ public class PaymentProcessing {
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void registerPayment(Money amount, String referenceNumber) {
+    public Payment registerPayment(Money amount, String referenceNumber) {
         var entity = paymentRepository.saveAndFlush(new PaymentEntity(amount, referenceNumber, moments.instant()));
         var dto = createDto(entity);
         eventPublisher.publishEvent(new PaymentReceivedEvent(dto));
         log.info("Registered Payment: {}", dto);
+        return dto;
     }
 
     @Transactional(readOnly = true)

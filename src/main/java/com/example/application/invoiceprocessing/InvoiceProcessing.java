@@ -55,7 +55,11 @@ public class InvoiceProcessing {
     void destroy() throws InterruptedException {
         log.info("Shutting down executor service");
         executorService.shutdown();
-        executorService.awaitTermination(30, TimeUnit.SECONDS);
+        if (!executorService.awaitTermination(30, TimeUnit.SECONDS)) {
+            log.warn("Executor service did not terminate before timeout");
+        } else {
+            log.info("Executor service terminated");
+        }
     }
 
     @ApplicationModuleListener

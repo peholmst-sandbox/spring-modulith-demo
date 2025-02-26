@@ -9,6 +9,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Main;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.textfield.BigDecimalField;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
@@ -67,7 +68,8 @@ public class OrderView extends Main {
 
     private void createOrder() {
         var orderDetails = new OrderDetails(description.getValue(), new Money(amount.getValue()), Period.ofDays(paymentTime.getValue()));
-        orderProcessing.createOrder(orderDetails);
+        var order = orderProcessing.createOrder(orderDetails);
+        Notification.show("Order %s created".formatted(order.id()));
         description.clear();
         amount.clear();
         paymentTime.clear();
