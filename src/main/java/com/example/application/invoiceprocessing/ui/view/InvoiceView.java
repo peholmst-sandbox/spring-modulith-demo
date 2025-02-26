@@ -20,7 +20,7 @@ public class InvoiceView extends Main {
 
     public InvoiceView(InvoiceProcessing invoiceProcessing) {
         var invoiceGrid = new Grid<Invoice>();
-        invoiceGrid.setItems(query -> invoiceProcessing.list(toSpringPageRequest(query)).stream());
+        invoiceGrid.setItems(query -> invoiceProcessing.listInvoices(toSpringPageRequest(query)).stream());
         invoiceGrid.addColumn(Invoice::invoiceId).setHeader("Invoice ID");
         invoiceGrid.addColumn(Invoice::orderId).setHeader("Order ID");
         invoiceGrid.addColumn(Invoice::description).setHeader("Description");

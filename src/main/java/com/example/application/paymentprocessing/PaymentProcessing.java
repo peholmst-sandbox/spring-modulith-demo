@@ -38,7 +38,7 @@ public class PaymentProcessing {
     }
 
     @Transactional(readOnly = true)
-    public List<Payment> list(Pageable pageable) {
+    public List<Payment> listPayments(Pageable pageable) {
         return paymentRepository.findAll(pageable).map(this::createDto).toList();
     }
 

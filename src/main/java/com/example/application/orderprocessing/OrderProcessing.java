@@ -38,7 +38,7 @@ public class OrderProcessing {
     }
 
     @Transactional(readOnly = true)
-    public List<Order> list(Pageable pageable) {
+    public List<Order> listOrders(Pageable pageable) {
         return orderRepository.findAll(pageable).map(this::createDto).toList();
     }
 

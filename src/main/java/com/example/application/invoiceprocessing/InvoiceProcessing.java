@@ -108,7 +108,7 @@ public class InvoiceProcessing {
     }
 
     @Transactional(readOnly = true)
-    public List<Invoice> list(Pageable pageable) {
+    public List<Invoice> listInvoices(Pageable pageable) {
         return invoiceRepository.findAll(pageable).map(this::createDto).toList();
     }
 

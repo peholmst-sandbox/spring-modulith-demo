@@ -41,7 +41,7 @@ public class PaymentView extends Main {
         payBtn.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         paymentGrid = new Grid<>();
-        paymentGrid.setItems(query -> paymentProcessing.list(toSpringPageRequest(query)).stream());
+        paymentGrid.setItems(query -> paymentProcessing.listPayments(toSpringPageRequest(query)).stream());
         paymentGrid.addColumn(Payment::paymentId).setHeader("Payment ID");
         paymentGrid.addColumn(Payment::amount).setHeader("Amount");
         paymentGrid.addColumn(Payment::referenceNumber).setHeader("Ref No");

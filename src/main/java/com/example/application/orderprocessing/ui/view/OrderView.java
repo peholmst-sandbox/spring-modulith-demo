@@ -49,7 +49,7 @@ public class OrderView extends Main {
         createBtn.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         orderGrid = new Grid<>();
-        orderGrid.setItems(query -> orderProcessing.list(toSpringPageRequest(query)).stream());
+        orderGrid.setItems(query -> orderProcessing.listOrders(toSpringPageRequest(query)).stream());
         orderGrid.addColumn(Order::id).setHeader("Order ID");
         orderGrid.addColumn(order -> order.details().description()).setHeader("Description");
         orderGrid.addColumn(order -> order.details().amount()).setHeader("Amount");
